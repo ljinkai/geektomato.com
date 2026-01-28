@@ -1,32 +1,3 @@
----
-name: nuxt4-qun-routes-migration
-overview: 基于 Nuxt4 + SQLite 重写现有 v1 项目的 `/qun/*` 系列接口，并保持对外 API 兼容，为后续从 LeanCloud 导出数据迁移到 SQLite 预留方案。
-todos:
-  - id: review-existing-routes
-    content: 进一步查看现有 v1 实现（特别是 `/qun/*` 控制器）以还原准确的入参和返回格式，确保 Nuxt4 版本完全兼容
-    status: completed
-  - id: design-sqlite-schema
-    content: 根据 `/qun/*` 业务行为和 LeanCloud 预期结构，细化 SQLite 表结构和关系
-    status: completed
-    dependencies:
-      - review-existing-routes
-  - id: set-up-nuxt4-server-routes
-    content: 在 Nuxt4 中搭建 `server/api/qun/*` 路由骨架，并预留 service/repository 层接口
-    status: completed
-    dependencies:
-      - design-sqlite-schema
-  - id: implement-core-services
-    content: 实现用户、经验、订单/支付等核心 service 逻辑，与 SQLite repository 对接
-    status: completed
-    dependencies:
-      - set-up-nuxt4-server-routes
-  - id: plan-leancloud-migration
-    content: 在 `scripts/leancloud-migrate` 中设计导出/导入脚本和切流流程，等待实际数据结构后补全
-    status: completed
-    dependencies:
-      - design-sqlite-schema
----
-
 # Nuxt4 + SQLite `/qun/*` 路由迁移技术方案
 
 ## 目标与范围
@@ -112,44 +83,139 @@ flowchart TD
       - `export-orders.ts`
       - `import-to-sqlite.ts`
 
-## SQLite 数据库设计（初稿）
+## SQLite 数据库设计（基于 `db/0128` LeanCloud schema 细化）
 
-> 先根据接口行为设计表结构，后续拿到 LeanCloud 导出结构后再做字段映射与调整。
+> 现在已经有了 LeanCloud 的 schema 与数据导出（见 `db/0128` 目录），下面基于这些真实结构对 SQLite 设计和字段映射做一次收敛，后续如需再根据业务细节微调。
 
-- **用户表 `users`**（对应 `/qun/userAdd`, `/qun/userLogin`, `/qun/updatePass`, `/qun/forgetUser`, `/qun/synchronizationUser`）
-  - `id` (PK, integer / string，视 LeanCloud id 是否复用)
-  - `username` / `mobile` / `email`
-  - `password_hash`
-  - `salt`（如有）
-  - `exp`（当前经验值）
-  - `status`（正常 / 冻结等）
-  - `created_at`, `updated_at`
+- **LeanCloud `_User` → 本地表 `users`**（对应 `/qun/userAdd`, `/qun/userLogin`, `/qun/updatePass`, `/qun/forgetUser`, `/qun/synchronizationUser`）
+  - LeanCloud 字段（来自 `_User_schema.json`）：
+    - `objectId`（String）: LeanCloud 主键
+    - `username`（String）
+    - `password`（String）
+    - `salt`（String）
+    - `email`（String）, `emailVerified`（Boolean）
+    - `mobilePhoneNumber`（String）, `mobilePhoneVerified`（Boolean）
+    - `nickName`（String, required）
+    - `applyAt`（Date, v2）
+    - `expirationAt`（Date, v2）
+    - `sessionToken`（String）
+    - `authData`（Object, user_private）
+    - `createdAt`, `updatedAt`, `ACL`
+  - 建议 SQLite 表结构（`users`）：
+    - `id` INTEGER PRIMARY KEY AUTOINCREMENT
+    - `lc_object_id` TEXT UNIQUE NOT NULL  — 对应 LeanCloud `objectId`
+    - `username` TEXT
+    - `password_hash` TEXT  — 由 LeanCloud `password` + `salt` 迁移/重新生成
+    - `salt` TEXT
+    - `email` TEXT
+    - `email_verified` INTEGER  — 映射自 `emailVerified`
+    - `mobile_phone_number` TEXT
+    - `mobile_phone_verified` INTEGER
+    - `nick_name` TEXT NOT NULL
+    - `apply_at` DATETIME
+    - `expiration_at` DATETIME  — 如果与 `Expiration` 表设计有重叠，可后续统一
+    - `session_token` TEXT  — 如不希望长期持久化，可后续迁移到独立 session 表
+    - `auth_data` TEXT  — JSON 存储 LeanCloud `authData`
+    - `status` INTEGER DEFAULT 1  — 业务层面新增：正常/冻结等
+    - `exp` INTEGER DEFAULT 0  — 当前经验值，对应 `/qun/updateExp` 的经验逻辑
+    - `created_at` DATETIME
+    - `updated_at` DATETIME
+
+- **LeanCloud `Expiration` → 本地表 `user_expiration`（可选，视是否继续拆分过期信息）**
+  - LeanCloud 字段（来自 `Expiration_schema.json`）：
+    - `objectId`（String）
+    - `userObjectId`（String, required）— 指向 `_User.objectId`
+    - `userObject`（Pointer<_User>）
+    - `username`（String, required）
+    - `expirationAt`（Date, v2）
+    - `sessionToken`（String, v2）
+    - `Bot`（String, default "0"）
+    - `createdAt`, `updatedAt`, `ACL`
+  - 建议 SQLite 表结构（`user_expiration`，如果不想拆表，也可以直接合并回 `users`）：
+    - `id` INTEGER PRIMARY KEY AUTOINCREMENT
+    - `lc_object_id` TEXT UNIQUE NOT NULL
+    - `user_lc_object_id` TEXT NOT NULL  — 对应 LeanCloud `userObjectId`
+    - `user_id` INTEGER NOT NULL  — 外键指向本地 `users.id`
+    - `username` TEXT NOT NULL
+    - `expiration_at` DATETIME
+    - `session_token` TEXT
+    - `bot_flag` INTEGER DEFAULT 0  — 映射自 `Bot`
+    - `created_at` DATETIME
+    - `updated_at` DATETIME
 
 - **经验日志表 `exp_logs`**（对应 `/qun/updateExp`）
-  - `id` (PK)
-  - `user_id` (FK -> users)
-  - `delta`（变动值）
-  - `reason`（任务、签到、消费等）
-  - `created_at`
+  - 现有 LeanCloud 导出中没有独立的「经验」 class，`Expiration` 更偏向会员到期时间；为兼容 `/qun/updateExp`，在 SQLite 侧仍建议单独设计：
+  - 表结构：
+    - `id` INTEGER PRIMARY KEY AUTOINCREMENT
+    - `user_id` INTEGER NOT NULL  — FK -> `users.id`
+    - `delta` INTEGER NOT NULL  — 经验变动值
+    - `reason` TEXT  — 任务/签到/消费等
+    - `created_at` DATETIME NOT NULL
 
-- **订单/支付表**（对应 `/qun/yungou/hook`, `/qun/yun_order_state`, `/qun/wx/qrcode`）
-  - `orders`
-    - `id` (PK)
-    - `user_id`
-    - `yungou_order_id` / 第三方订单号
-    - `amount`
-    - `status`（pending / paid / failed / refunded ...）
-    - `created_at`, `paid_at`
-  - `payment_notifications`
-    - `id` (PK)
-    - `order_id`
-    - `payload`（存原始回调 JSON）
-    - `created_at`
+- **LeanCloud `qun_orders` → 本地表 `orders`**（对应 `/qun/yungou/hook`, `/qun/yun_order_state`, `/qun/wx/qrcode`）
+  - LeanCloud 字段（来自 `qun_orders_schema.json`）：
+    - `objectId`（String）
+    - `user_id`（String, required）
+    - `qr_id`（String, required）
+    - `charge_id`（String, required）
+    - `order_id`（String, required）
+    - `amount`（String, required）
+    - `day`（String, required）
+    - `payway`（String, required）
+    - `state`（String）
+    - `refund_state`（String）
+    - `refund_amount`（String）
+    - `description`（String）
+    - `create_time`（String, required）
+    - `createdAt`, `updatedAt`, `ACL`
+  - 建议 SQLite 表结构（`orders`）：
+    - `id` INTEGER PRIMARY KEY AUTOINCREMENT
+    - `lc_object_id` TEXT UNIQUE NOT NULL
+    - `user_lc_id` TEXT NOT NULL  — 对应 LeanCloud `user_id`
+    - `user_id` INTEGER  — 外键指向本地 `users.id`（可在导入阶段建立映射）
+    - `qr_id` TEXT NOT NULL
+    - `charge_id` TEXT NOT NULL
+    - `order_id` TEXT NOT NULL
+    - `amount` INTEGER NOT NULL  — 可以在导入脚本中从 String 转换为分（int）
+    - `day` TEXT NOT NULL
+    - `payway` TEXT NOT NULL
+    - `state` TEXT  — 如 "pending" / "paid" / "failed"
+    - `refund_state` TEXT
+    - `refund_amount` INTEGER  — 同样建议用分
+    - `description` TEXT
+    - `create_time_raw` TEXT NOT NULL  — 保留原 `create_time` 文本
+    - `created_at` DATETIME
+    - `updated_at` DATETIME
+  - 支付回调原始数据（仅存在于新系统）：
+    - 新增表 `payment_notifications`：
+      - `id` INTEGER PRIMARY KEY AUTOINCREMENT
+      - `order_id` INTEGER NOT NULL  — FK -> `orders.id`
+      - `payload` TEXT NOT NULL  — 存 webhook 原始 JSON
+      - `created_at` DATETIME NOT NULL
 
-- **配置表 `qun_config`**（对应 `/qun/config`）
-  - `id` (PK)
-  - `key`
-  - `value` (JSON / TEXT)
+- **LeanCloud `config` → 本地表 `qun_config`**（对应 `/qun/config`）
+  - LeanCloud 字段（来自 `config_schema.json`）：
+    - `objectId`（String）
+    - `key`（String, required）
+    - `value`（String, required）
+    - `createdAt`, `updatedAt`, `ACL`
+  - 建议 SQLite 表结构（`qun_config`）：
+    - `id` INTEGER PRIMARY KEY AUTOINCREMENT
+    - `lc_object_id` TEXT UNIQUE
+    - `key` TEXT NOT NULL UNIQUE
+    - `value` TEXT NOT NULL  — 若为 JSON，可在应用层做 `JSON.parse`
+    - `created_at` DATETIME
+    - `updated_at` DATETIME
+
+- **LeanCloud 其它与群/微信相关的表（当前 `/qun/*` 接口未直接使用，但可预留）**
+  - `Rooms`（`Rooms_schema.json`）：
+    - 字段：`roomId`, `roomName`, `wxId`, `memberAll`（Array）, `userId`, `userName` 等。
+    - 可映射为本地 `rooms` 表，未来若 `/qun/*` 或 IM 逻辑需要房间维度信息时使用。
+  - `UserShadow`（`UserShadow_schema.json`）：
+    - 字段：`wxId`, `nickName`, `userId` 等。
+    - 可映射为本地 `user_shadows` 表，用于绑定 `_User` 与微信侧身份。
+  - `_Role` 等权限相关 class：
+    - 若新系统采用自定义权限体系，可只做「只读导入」，或先不导入，仅在将来需要兼容管理后台时再设计。
 
 ## API 兼容策略
 
@@ -211,30 +277,43 @@ flowchart TD
   - 根据请求生成/查询支付二维码链接。
   - 若仍依赖微信官方支付或第三方 sdk，可在 Nuxt server routes 中调用相应 SDK / HTTP API，返回 QRCode URL 或 base64 内容。
 
-## LeanCloud → SQLite 迁移预案（后续执行）
+## LeanCloud → SQLite 迁移预案（结合 `db/0128` 现有导出）
 
-> 目前你还没有导出 LeanCloud 数据，这一节是预留方案，未来可按此步骤落地。
+> 当前 `db/0128` 目录下已经包含了 LeanCloud 的 schema 与 `*_all.json` 全量数据导出，可以在此基础上直接推进迁移脚本的实现。
 
-- **1. 分析 LeanCloud 结构**
-  - 导出 LeanCloud schema 与 sample 数据，确认：
-    - 用户表（如 `_User` 或自定义表）字段 → 映射到 `users` 表。
-    - 订单、支付、经验相关的 class → 对应到 `orders`、`exp_logs` 等表。
+- **1. 映射确认（已完成 80%）**
+  - 根据 `*_schema.json` 与上文 SQLite 设计，已经初步确定：
+    - `_User` → `users`
+    - `Expiration` → `user_expiration`（或合并进 `users`）
+    - `qun_orders` → `orders`
+    - `config` → `qun_config`
+    - `Rooms` → `rooms`（可选）
+    - `UserShadow` → `user_shadows`（可选）
+  - 后续只需在实际跑一遍导入脚本时，补齐个别枚举值、状态字段的业务含义。
 
-- **2. 编写导出脚本**
-  - 在 `scripts/leancloud-migrate` 中使用 Node 脚本，通过 LeanCloud REST API 或官方 SDK：
-    - 分页拉取所有相关数据。
-    - 将导出结果保存为 JSON / CSV。
+- **2. 导入脚本（从 `db/0128/*_all.json` → SQLite）**
+  - 在 `scripts/leancloud-migrate` 下为每个核心 class 编写单独的导入脚本，例如：
+    - `import-users-from-json.ts`：读取 `_User_all.json`，写入 `users` 表。
+    - `import-expiration-from-json.ts`：读取 `Expiration_all.json`，写入 `user_expiration` 或回填 `users.expiration_at`。
+    - `import-orders-from-json.ts`：读取 `qun_orders_all.json`，写入 `orders` 表。
+    - `import-config-from-json.ts`：读取 `config_all.json`，写入 `qun_config` 表。
+  - 导入时注意：
+    - 先写入拥有独立主键、无外键依赖的表（如 `users`, `qun_config`），再写依赖它们的表（如 `orders`, `user_expiration`）。
+    - 保存一份 `lc_object_id` → 本地 `id` 的映射（可以内存 map，也可以单独映射表），用于处理 `user_lc_id` → `user_id` 的转换。
+    - 做必要的类型转换，例如金额 String → Integer（分）、布尔 → 0/1。
 
-- **3. 编写导入脚本**
-  - 使用同一目录下的脚本，将 JSON 数据写入 SQLite：
-    - 建立 id 映射（`leancloud_id` → 本地 `id`）。
-    - 保证约束（如外键关系、唯一索引）在导入前先关闭或顺序导入。
+- **3. 与 Nuxt `/qun/*` 接口联调**
+  - 在本地 SQLite 导入完成后：
+    - 启动 Nuxt4 应用，使用 `/qun/userLogin`, `/qun/config`, `/qun/yun_order_state` 等接口，对比旧系统的典型请求/响应。
+    - 通过对比 JSON 字段（尤其是字段名、错误码、状态含义），逐步调整 service 层的 DTO 与 repository 查询。
 
-- **4. 切流方案**
+- **4. 生产切流方案**
   - 开发/测试环境：
-    - 先在本地 SQLite 中跑完导入，验证接口在新数据上的行为与旧系统一致。
+    - 以 `db/0128` 这批导出为基线，反复迭代导入脚本和接口实现，确保在全量数据上行为稳定。
   - 生产环境迁移：
-    - 确定一个“切换时间点”：先暂停旧系统写入（或进入只读），导出增量数据，写入 SQLite，然后切换 DNS/反向代理到新 Nuxt 服务。
+    - 在正式切换前再做一次最新数据导出（可基于当前的 JSON 脚本复用）。
+    - 停止旧服务写入或进入只读模式，导出增量数据并导入 SQLite。
+    - 完成数据校验后，将网关 / 反向代理切到 Nuxt4 服务，并在一段时间内保留回滚预案（例如保留旧服务只读访问能力以做比对）。
 
 ## 安全与性能考虑
 

@@ -1,0 +1,1 @@
+{"permissions":{"create":{"*":true,"users":[],"roles":[]},"find":{"*":true,"users":[],"roles":[]},"get":{"*":true,"users":[],"roles":[]},"update":{"*":true,"users":[],"roles":[]},"delete":{"users":"","roles":""},"add_fields":{"*":true}}}

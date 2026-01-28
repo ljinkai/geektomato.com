@@ -1,0 +1,1 @@
+{"schema":{"updatedAt":{"type":"Date"},"ACL":{"type":"ACL"},"objectId":{"type":"String"},"createdAt":{"type":"Date"},"wxId":{"type":"String","v":2},"nickName":{"type":"String"},"userId":{"type":"String","v":2}}}

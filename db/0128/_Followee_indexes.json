@@ -1,0 +1,1 @@
+{"indexes":[{"v":1,"unique":true,"key":{"user":1,"followee":1},"name":"user_1_followee_1","ns":"ksq1fOUMOKe53go0dLV3TAct-gzGzoHsz._Followee","background":true}]}
