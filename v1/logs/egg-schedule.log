@@ -1,0 +1,6 @@
+2026-01-28 15:44:28,322 INFO 30910 [Timer] /Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 45931679ms at 2026-01-29 04:30:00.001
+2026-01-28 15:44:28,323 INFO 30910 [Timer] /Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 29731678ms at 2026-01-29 00:00:00.001
+2026-01-28 15:44:28,323 INFO 30910 [Timer] /Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 29732677ms at 2026-01-29 00:00:01.000
+2026-01-28 15:44:28,059 INFO 30918 [egg-schedule]: register schedule /Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2026-01-28 15:44:28,059 INFO 30918 [egg-schedule]: register schedule /Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/app/schedule/clean_log.js
+2026-01-28 15:44:28,059 INFO 30918 [egg-schedule]: register schedule /Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/app/schedule/rotate_by_file.js

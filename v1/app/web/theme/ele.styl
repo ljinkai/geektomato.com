@@ -1,0 +1,115 @@
+// 变量
+$primary-color = #3b3bea
+$primary-color-hover = rgba(48,121,244,0.5)
+$plain-color = #fedfd2
+$plain-color-hover = #FFBFA4
+
+.el-button--primary
+    background-color: $primary-color !important
+    border-color: $primary-color !important
+    &:focus,
+    &:hover
+        background-color: $primary-color-hover !important
+        border-color: $primary-color-hover !important
+    &.el-button--small
+        padding: 0 20px
+        height: 32px
+        line-height: 32px
+    &.is-plain
+        background-color: #ecf5ff !important
+        color: $primary-color !important
+        border-color: $primary-color !important
+        &:hover
+        &:focus
+        &.is-loading
+            background-color: $primary-color !important
+            color: #ffffff !important
+
+.el-loading-spinner .path
+    stroke #3b3bea !important
+
+.el-notification__content p
+    text-align left !important
+    margin -2px 8px 0 5px !important
+    
+.el-form-item.is-error .el-input__inner, .el-form-item.is-error .el-input__inner:focus, .el-form-item.is-error .el-textarea__inner, .el-form-item.is-error .el-textarea__inner:focus
+    border-color: $primary-color;
+
+.el-form-item__label
+    line-height: 30px;
+
+.el-checkbox__input.is-checked .el-checkbox__inner, 
+.el-checkbox__input.is-indeterminate .el-checkbox__inner
+    background-color: $primary-color !important
+    border-color: $primary-color !important
+
+.el-radio__input
+    .el-radio__inner
+        width: 18px
+        height: 18px
+        border: 2px solid #696969
+    &.is-checked
+        .el-radio__inner
+            border-color: $color_geektomato !important
+            background-color: #fff !important
+            &:after
+                width: 7px
+                height: 7px
+                background-color: $color_geektomato !important
+        &+.el-radio__label
+            color: #000 !important
+
+.el-select .el-input.is-focus .el-input__inner
+    color $primary-color
+    border-color: $primary-color;
+
+.el-select .el-input__inner:focus
+    border-color: $primary-color !important;
+
+.el-button
+    .el-button--primary
+        &:focus
+        &:hover
+            background-color: $primary-color-hover !important
+            border-color: $primary-color-hover !important
+    // &.is-plain
+    //     &:focus
+    //     &:hover
+    //         color: $primary-color !important
+    //         // border: 1px $primary-color solid !important
+    //         background-color: $plain-color !important
+            
+.el-button--text:focus, .el-button--text:hover
+    background-color: transparent !important
+    border-color: transparent !important
+    color: $primary-color-hover !important
+
+.el-select-dropdown__item.selected
+    color $primary-color !important
+
+.el-dialog__title
+    font-size 24px
+
+.popover-text
+    margin-bottom: 10px
+
+.el-icon-loading:before
+    display: none
+
+.el-button.is-loading
+    span
+        display: none
+
+.el-tabs__item:hover
+    color $primary-color !important
+
+.el-tooltip__popper
+    word-break: break-word
+
+@media (max-width: $phone)
+    .el-dialog
+        width: 100% !important
+        margin: 0 !important
+        min-height: 100%
+    .el-message
+        min-width: 300px

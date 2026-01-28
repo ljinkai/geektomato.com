@@ -1,0 +1,470 @@
+{
+  "multipart": {
+    "mode": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "fileSize": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "fileExtensions": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "autoFields": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "defaultCharset": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "fieldNameSize": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "fieldSize": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "fields": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "files": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "whitelist": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "allowArrayField": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "tmpdir": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+    "cleanSchedule": {
+      "cron": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js",
+      "disable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-multipart/config/config.default.js"
+    }
+  },
+  "siteFile": {
+    "/favicon.ico": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "/apple-touch-icon.png": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "/robots.txt": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "/plugin/facebook.js": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "/plugin/jstz-1.0.4.min.js": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "cacheControl": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "view": {
+    "cache": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view/config/config.local.js",
+    "root": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view/config/config.default.js",
+    "defaultExtension": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view/config/config.default.js",
+    "defaultViewEngine": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view/config/config.default.js",
+    "mapping": {
+      ".js": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js"
+    }
+  },
+  "vuessr": {
+    "layout": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "renderOptions": {
+      "basedir": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "runInNewContext": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js"
+    },
+    "doctype": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "manifest": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "injectHeadRegex": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "injectBodyRegex": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "injectCss": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.local.js",
+    "injectJs": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "injectRes": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "crossorigin": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "mergeLocals": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "fallbackToClient": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "viewEngine": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+    "cache": {
+      "max": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js",
+      "maxAge": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js"
+    },
+    "afterRender": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-view-vue-ssr/config/config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "/Users/ljk/dev/github/3pole/geektomato/config/config.local.js",
+    "xframe": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "value": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "csrf": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/config/config.local.js"
+    },
+    "protocolWhiteList": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+    "defaultMiddleware": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+    "hsts": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.local.js",
+      "maxAge": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+      "includeSubdomains": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "dta": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "noopen": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "nosniff": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "xssProtection": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "csp": {
+      "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+      "policy": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+      "ipExceptionList": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js",
+      "checkAddress": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+    }
+  },
+  "cors": {
+    "origin": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "allowMethods": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+  },
+  "logger": {
+    "consoleLevel": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "dir": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "encoding": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "env": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "level": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "disableConsoleAfterReady": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "outputJSON": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "buffer": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "appLogName": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "coreLogName": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "agentLogName": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "errorLogName": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "coreLogger": {
+      "consoleLevel": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.local.js"
+    },
+    "allowDebugAtProd": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "enablePerformanceTimer": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "static": {
+    "prefix": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "dir": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "maxAge": "/Users/ljk/dev/github/3pole/geektomato/config/config.local.js",
+    "dynamic": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-static/config/config.default.js",
+    "preload": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-static/config/config.default.js",
+    "buffer": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-static/config/config.default.js",
+    "maxFiles": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-static/config/config.default.js"
+  },
+  "keys": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+  "middleware": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+  "backuser": {
+    "id": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+    "token": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+  },
+  "urls": {
+    "login": {
+      "facebookLogin": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "googleLogin": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "login": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "signUpEmail": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    },
+    "account": {
+      "forget": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    },
+    "invite": {
+      "getInviteTips": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "getUserInfoByInviteCode": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "connect": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    },
+    "item": {
+      "sync": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "detail": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "bid": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "orderId": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    },
+    "bid": {
+      "position": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "iframePosition": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    },
+    "order": {
+      "detail": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "list": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "pay": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "count": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    },
+    "payment": {
+      "paymentInfo": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "channel": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "shippingaddress": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "addshippingaddress": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "deleteshippingaddress": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "setdefaultshippingaddress": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "addcreditcard": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "addcreditcardAsync": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "delcreditcard": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    },
+    "indiemaker": {
+      "producthunt": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "indiehackers": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "indiehackers_community": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js",
+      "github": "/Users/ljk/dev/github/3pole/geektomato/config/config.default.js"
+    }
+  },
+  "development": {
+    "watchDirs": "/Users/ljk/dev/github/3pole/geektomato/config/config.local.js",
+    "ignoreDirs": "/Users/ljk/dev/github/3pole/geektomato/config/config.local.js",
+    "fastReady": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-development/config/config.default.js",
+    "reloadOnDebug": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-development/config/config.default.js",
+    "overrideDefault": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-development/config/config.default.js",
+    "overrideIgnore": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-development/config/config.default.js"
+  },
+  "logview": {
+    "dir": "/Users/ljk/dev/github/3pole/geektomato/config/config.local.js",
+    "prefix": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logview/config/config.default.js",
+    "staticHost": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logview/config/config.default.js"
+  },
+  "session": {
+    "maxAge": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-session/config/config.default.js",
+    "key": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-session/config/config.default.js",
+    "httpOnly": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-session/config/config.default.js",
+    "encrypt": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-session/config/config.default.js",
+    "logValue": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-session/config/config.default.js"
+  },
+  "helper": {
+    "shtml": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-security/config/config.default.js"
+  },
+  "jsonp": {
+    "limit": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-jsonp/config/config.default.js",
+    "callback": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-jsonp/config/config.default.js",
+    "csrf": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-jsonp/config/config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-onerror/config/config.default.js",
+    "appErrorFilter": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-onerror/config/config.default.js",
+    "templatePath": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-onerror/config/config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-i18n/config/config.default.js",
+    "dirs": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-i18n/config/config.default.js",
+    "queryField": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-i18n/config/config.default.js",
+    "cookieField": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-i18n/config/config.default.js",
+    "cookieDomain": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-i18n/config/config.default.js",
+    "cookieMaxAge": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-i18n/config/config.default.js"
+  },
+  "watcher": {
+    "type": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-watcher/config/config.local.js",
+    "eventSources": {
+      "default": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-watcher/config/config.default.js",
+      "development": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-watcher/config/config.default.js"
+    }
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-schedule/config/config.default.js",
+      "file": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-schedule/config/config.default.js"
+    }
+  },
+  "schedule": {
+    "directory": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-schedule/config/config.default.js"
+  },
+  "logrotator": {
+    "filesRotateByHour": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/config/config.default.js",
+    "hourDelimiter": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/config/config.default.js",
+    "filesRotateBySize": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/config/config.default.js",
+    "maxFileSize": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/config/config.default.js",
+    "maxFiles": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/config/config.default.js",
+    "rotateDuration": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/config/config.default.js",
+    "maxDays": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-logrotator/config/config.default.js"
+  },
+  "redis": {
+    "default": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-redis/config/config.default.js",
+    "app": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-redis/config/config.default.js",
+    "agent": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-redis/config/config.default.js",
+    "supportTimeCommand": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-redis/config/config.default.js"
+  },
+  "webpack": {
+    "port": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-webpack/config/config.default.js",
+    "proxy": {
+      "host": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-webpack/config/config.default.js",
+      "match": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-webpack/config/config.default.js"
+    },
+    "webpackConfigList": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg-webpack/config/config.default.js"
+  },
+  "env": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "name": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "cookies": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "proxy": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "maxIpsCount": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "maxProxyCount": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "protocolHeaders": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "ipHeaders": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "hostHeaders": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "pkg": {
+    "name": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "version": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "description": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "scripts": {
+      "debug": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "clean": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "build:test": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "build:prod": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "start:test": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "start:test2": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "start:prod": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "start": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "stop": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "dependencies": {
+      "axios": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "bcrypt-nodejs": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "cheerio": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "circular-json": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "cloudinary": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "cross-env": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "crypto-js": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "dottie": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "easywebpack-cli": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "easywebpack-vue": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-bin": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-cors": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-logger": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-redis": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-scripts": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-static": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-validate": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-view-vue-ssr": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-webpack": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-webpack-vue": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "element-ui": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "extend": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "graphql-request": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "js-cookie": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "jws": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "leancloud-storage": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "lodash": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "mockjs": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "moment": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "node-schedule": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "papaparse": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "svg-captcha": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "uuid": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-cookie": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-echarts": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-hot-reload-api": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-i18n": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-img-loader": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-router": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-style-loader": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vue-template-compiler": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vuebar": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vuex": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vuex-router-sync": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "wechaty": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "wechaty-puppet-padlocal": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "devDependencies": {
+      "autod-egg": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "autoprefixer": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-core": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-eslint": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-helper-vue-jsx-merge-props": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-add-module-exports": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-component": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-istanbul": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-syntax-dynamic-import": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-syntax-jsx": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-transform-object-assign": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-transform-object-rest-spread": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-transform-runtime": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-plugin-transform-vue-jsx": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-preset-env": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "babel-preset-stage-2": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "egg-logview": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-config-egg": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-config-standard": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-friendly-formatter": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-loader": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-plugin-html": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-plugin-import": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-plugin-node": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-plugin-promise": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-plugin-standard": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "eslint-plugin-vue": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "extract-text-webpack-plugin": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "imagemin-webpack-plugin": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "ip": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "less": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "less-loader": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "node-sass": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "sass-loader": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "stylus": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "stylus-loader": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "vconsole": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "engines": {
+      "node": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "ci": {
+      "version": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "repository": {
+      "type": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "url": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "author": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "license": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "homepage": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "baseDir": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "HOME": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "rundir": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "dump": {
+    "ignore": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "notFound": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "sitefile": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "middlewares": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "httpClient": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "bodyParser": {
+    "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "formLimit": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "jsonLimit": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "textLimit": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "strict": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "queryString": {
+      "arrayLimit": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "depth": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "parameterLimit": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "onerror": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "dnsCacheLookupInterval": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "dnsCacheMaxLength": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "request": {
+      "timeout": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "freeSocketTimeout": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "freeSocketTimeout": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "logging": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "coreMiddleware": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "workerStartTimeout": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "serverTimeout": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+  "cluster": {
+    "listen": {
+      "path": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "port": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+      "hostname": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+    }
+  },
+  "clusterClient": {
+    "maxWaitTime": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js",
+    "responseTimeout": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+  },
+  "onClientError": "/Users/ljk/dev/github/3pole/geektomato/node_modules/egg/config/config.default.js"
+}

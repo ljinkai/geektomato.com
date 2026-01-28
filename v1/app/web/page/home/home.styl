@@ -1,0 +1,281 @@
+.el-container
+    display block
+.main-items
+    width: 100%
+    padding 0px 12px
+    margin: auto
+    display flex
+    flex-wrap: wrap;
+    justify-content left
+    //float left
+    .main-item
+        width 25%
+        padding 12px
+        //float left
+        .main-item-block
+            position relative
+            overflow hidden
+            width 100%
+            height 196px
+            border-radius 3px
+            cursor pointer
+        .dimmer-dark
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            display: block;
+            opacity: .5!important;
+            background: -webkit-linear-gradient(bottom,#000 0%,rgba(0,0,0,0) 50%)!important;
+        .dimmer-light
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            background-color: rgba(0,0,0,.15);
+            z-index: 2;
+            //.main-item-img
+                //position absolute
+                //object-fit: cover;
+                //width: 125%;
+                //height: 125%;
+                //top: -12.5%;
+                //left: -12.5%;
+                //z-index: 2;
+            .main-item-title
+                z-index 3
+                width 100%
+                position absolute
+                left 0px
+                padding 0px 12px
+                bottom 20px
+                color white
+                font-weight 800
+                font-size: 16px;
+                line-height 1.25
+                text-shadow 1px 1px 0 rgba(0,0,0,.35), 1px 1px 5px rgba(0,0,0,.5)
+.main-loading
+    width 100%
+    height 60px
+.image-wrap {
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    left: -15%;
+    top: -15%;
+    transform: scale(0.8);
+    transition: 280ms ease-out;
+    pointer-events: none;
+}
+.border, .text, .image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+}
+.image {
+    width 100%
+    height 100%
+}
+.box {
+    width: 100%;
+    height: 196px;
+    //float left
+}
+.box {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    //float: left;
+    height 196px
+    border-radius 3px
+
+    &:hover {
+        .text {
+            opacity: 1;
+            transform: translate3d(0,0,0);
+            transition-duration: 140ms;
+        }
+        .image-wrap {
+            transform: scale(1);
+            transition-duration: 140ms;
+        }
+    }
+}
+.image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    background-size: cover !important;
+}
+/** item **/
+.item-info
+    max-width 600px
+    width 100%
+    margin 0px auto
+    padding 0px 20px
+    font-size 14px
+    color #606266
+    .item-info-header
+        margin 0px 0px 15px 0px
+    .item-info-title
+        font-size 24px
+        color black
+        margin-bottom 12px
+    .item-info-origin
+        color #aea79f
+        font-size 12px
+    .item-info-link
+        color $color_geektomato
+        font-size 14px
+    .item-info-date
+        text-align right
+        font-size 12px
+        color #aea79f
+    .item-info-img
+        margin 10px auto
+        display block
+        max-width 100%
+    .item-info-con
+        margin-top 12px
+        line-height 1.8
+        word-wrap:break-word;
+    .item-info-footer
+        margin-top 30px
+        .item-info-footer-right
+            text-align right
+        .item-info-link
+            font-size 16px
+        .item-info-footer-site
+            font-size 14px
+            color #aea79f
+            line-height 26px
+    .item-info-words
+        font-size 14px
+        margin-top 20px
+        border-left 2px #aea79f solid
+        padding-left 8px
+/** loading**/
+.profile-main-loader{
+    left: 50% !important;
+    margin-left:-30px;
+    position: relative;
+    top: 50% !important;
+    width: 60px;
+    z-index: 9000 !important;
+}
+
+.profile-main-loader .loader {
+    position: relative;
+    margin: 0px auto;
+    width: 60px;
+    height:60px;
+}
+.profile-main-loader .loader:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.circular-loader {
+    -webkit-animation: rotate 2s linear infinite;
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    -webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+}
+
+.loader-path {
+    stroke-dasharray: 150,200;
+    stroke-dashoffset: -10;
+    -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+}
+
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes dash {
+    0% {
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -124;
+    }
+}
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -124;
+    }
+}
+@-webkit-keyframes color {
+    0% {
+        stroke: #fd0000;
+    }
+    40% {
+        stroke: #fd0000;
+    }
+    66% {
+        stroke: #fd0000;
+    }
+    80%, 90% {
+        stroke: #fd0000;
+    }
+}
+@keyframes color {
+    0% {
+        stroke: #fd0000;
+    }
+    40% {
+        stroke: #fd0000;
+    }
+    66% {
+        stroke: #fd0000;
+    }
+    80%, 90% {
+        stroke: #fd0000;
+    }
+}
+@media (max-width: $media-screen-phone-max)
+    .main-items
+        .main-item
+            width 100%
+    .item-info
+        padding 0px

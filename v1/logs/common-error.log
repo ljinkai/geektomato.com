@@ -1,0 +1,46 @@
+2026-01-28 15:44:28,769 ERROR 30910 nodejs.unhandledExceptionError: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:79:19)
+    at Object.createHash (node:crypto:139:10)
+    at module.exports (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/util/createHash.js:90:53)
+    at NormalModule._initBuildHash (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:401:16)
+    at handleParseError (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:449:10)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:481:5
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:342:12
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:373:3
+    at iterateNormalLoaders (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:214:10)
+    at Array.<anonymous> (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:205:4)
+    at Storage.finished (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:55:16)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:91:9
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/graceful-fs/graceful-fs.js:123:16
+    at FSReqCallback.readFileAfterClose [as oncomplete] (node:internal/fs/read/context:68:3)
+opensslErrorStack: ["error:03000086:digital envelope routines::initialization error","error:0308010C:digital envelope routines::unsupported"]
+library: "digital envelope routines"
+reason: "unsupported"
+code: "ERR_OSSL_EVP_UNSUPPORTED"
+name: "unhandledExceptionError"
+pid: 30910
+hostname: ljkdeMacBook-Pro.local
+
+2026-01-28 15:44:28,873 ERROR 30910 nodejs.unhandledExceptionError: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:79:19)
+    at Object.createHash (node:crypto:139:10)
+    at module.exports (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/util/createHash.js:90:53)
+    at NormalModule._initBuildHash (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:401:16)
+    at handleParseError (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:449:10)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:481:5
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:342:12
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:373:3
+    at iterateNormalLoaders (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:214:10)
+    at Array.<anonymous> (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:205:4)
+    at Storage.finished (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:55:16)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:91:9
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/graceful-fs/graceful-fs.js:123:16
+    at FSReqCallback.readFileAfterClose [as oncomplete] (node:internal/fs/read/context:68:3)
+opensslErrorStack: ["error:03000086:digital envelope routines::initialization error","error:0308010C:digital envelope routines::unsupported"]
+library: "digital envelope routines"
+reason: "unsupported"
+code: "ERR_OSSL_EVP_UNSUPPORTED"
+name: "unhandledExceptionError"
+pid: 30910
+hostname: ljkdeMacBook-Pro.local
+

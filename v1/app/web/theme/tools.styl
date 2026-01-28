@@ -1,0 +1,500 @@
+/*!
+* tools
+*/
+
+//变量
+$gray = #f4f4f4
+$font_color = #242424
+$font_color_1 = #7c7c7c
+$font_color_2 = #c7c7c7
+$color_primary = #3b3bea
+$color_hover = #c6e2ff
+$color_geektomato = #fd0000
+$phone = 556px
+$minWidth = 332px
+$maxWidth = 1136px
+
+$media-screen-phone-max = 767px
+$media-screen-min-phone-max = 320px
+$media-screen-tablet-min = 768px
+$media-screen-tablet-max = 991px
+$media-screen-desktop-min = 992px
+
+$border_1 = solid 1px rgba(36, 36, 36, 0.1)
+
+//函数
+
+//autoprefixer
+
+//vendor(prop, args)
+//  -webkit-{prop} args
+//  -moz-{prop} args
+//  {prop} args
+//
+//border-radius()
+//  vendor('border-radius', arguments)
+//
+//box-shadow()
+//  vendor('box-shadow', arguments)
+//
+//transform()
+//  vendor('transform', arguments)
+//
+//transition()
+//  vendor('transition', arguments)
+//
+//rem(px)
+//    (px/16)rem
+
+//样式
+.max-width {
+    max-width $maxWidth
+    margin 0px auto
+}
+
+
+//display
+.hide
+    display: none !important
+.show 
+    display: block !important
+
+//float
+.fr
+    float: right
+.fl
+    float: left
+//clear
+.clear
+    clear: both
+
+body.pop-show
+    overflow: hidden
+    height: 100% !important
+
+// public max-width
+.public-limit
+    width 100%
+    max-width 1024px
+    margin 0px auto
+//column split 12
+.x-col-1
+    float:left
+    width : 8.33333333%;
+.x-col-2
+    float:left
+    width : 16.66666667%
+.x-col-3
+    float:left
+    width : 25%;
+.x-col-4
+    float:left
+    width : 33.33333333%;
+.x-col-5
+    float:left
+    width : 41.66666667%;
+.x-col-6
+    float:left
+    width : 50%;
+.x-col-7
+    float:left
+    width : 58.33333333%;
+.x-col-8
+    float:left
+    width: 66.66666667%;
+.x-col-9
+    float:left
+    width : 75%
+.x-col-10
+    float:left
+    width : 83.33333333%;
+.x-col-11
+    float:left
+    width : 91.66666667%;
+    float:left
+    width : 100%;
+
+// clearfix
+.clearfix 
+    zoom: 1 /*==for IE6/7 Maxthon2==*/
+    &:after /*==for FF/chrome/opera/IE8==*/
+        clear both
+        content '.'
+        display block
+        width 0
+        height 0
+        visibility hidden
+
+//overflow: hidden
+.flow-hide 
+    overflow: hidden
+
+.shadow
+    box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.05)
+
+.block
+    border-radius: 4px
+    background-color: #ffffff
+    border: solid 1px #eeeeee
+    
+//body color
+.pub-body-gray 
+    background-color: $gray
+    
+.pub-body-white
+    background-color: white
+
+.underline
+    text-decoration: underline
+
+.text-center
+    text-align: center !important
+.text-right
+    text-align: right !important
+.text-left
+    text-align: left !important
+
+.transformX--100
+    transform: translateX(-100%)
+
+.transformX--50
+    transform: translateX(-50%)
+
+.transformX-0
+    transform: translateX(0)
+
+.transformX-50
+    transform: translateX(50%)
+
+.transformX-100
+    transform: translateX(100%)
+    
+.transformX-150
+    transform: translateX(150%)
+
+.line
+    border-bottom: solid 1px #e9e9e9
+.line-r
+    border-right: solid 1px #e9e9e9
+
+.pointer
+    cursor: pointer
+    
+.clickable
+    cursor: pointer
+    outline: none
+    &:hover
+        text-decoration: underline !important
+
+.clickable-1
+    cursor: pointer
+    outline: none
+    color: $color_geektomato
+    &:hover
+        text-decoration: none !important
+
+.loading
+.el-icon-loading
+    width: 19px
+    height: 19px
+    margin: 0 auto
+    border-radius: 50%
+    background: none !important
+    display: block
+    font-size: 10px
+    position: relative
+    text-indent: -9999em
+    border-top: 2px solid #f4f4f4
+    border-right: 2px solid #f4f4f4
+    border-bottom: 2px solid #f4f4f4
+    border-left: 2px solid rgba(255, 255, 255, 0);
+    -webkit-animation: load 1.1s infinite linear;
+    animation: load 1.1s infinite linear
+
+@keyframes load {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// container
+.container
+    padding-right: 15px
+    padding-left: 15px
+    margin-right: auto
+    margin-left: auto
+    max-width: 1137px
+
+.container-fluid
+    padding-right: 15px
+    padding-left: 15px
+    margin-right: 15px
+    margin-left: 15px
+
+.color-primary
+    color: $color_primary
+.color-geektomato
+    color: $color_geektomato
+.color-danger
+    color: #F56C6C
+.color-success
+    color: #5cb87a
+.color-gray
+    color: #666666
+.color-gray-more
+    color: #999999
+
+.upcase
+    text-transform: uppercase
+.capitalize
+    text-transform: capitalize
+
+.normal
+    font-weight: 400
+.bold
+    font-weight: 500
+.bolder
+    font-weight: 600
+
+.border
+    border: 1px solid #e9e9e9
+
+.line
+    height: 1px
+    width: 100%
+    background-color: #e9e9e9
+    margin: 20px 0
+
+.flex
+    display: flex
+.flex-row
+    flex-direction: row !important
+.flex-col
+    flex-direction: column !important
+.flex-row-left
+    justify-content: start !important
+.flex-row-center
+    justify-content: center !important
+.flex-row-end
+    justify-content: flex-end !important
+.flex-row-between
+    justify-content: space-between !important
+.flex-col-center
+    align-items: center !important
+
+.mt-0
+    margin-top: 0
+.mt-10
+    margin-top: 10px
+.mt-15
+    margin-top: 15px
+.mt-20
+    margin-top: 20px
+.mb-5
+    margin-bottom: 5px
+.mb-10
+    margin-bottom: 10px
+.mb-15
+    margin-bottom: 15px
+.mb-20
+    margin-bottom: 20px
+.mb-25
+    margin-bottom: 25px
+.mb-40
+    margin-bottom: 40px !important
+.mb-50
+    margin-bottom: 50px !important
+.mr-30
+    margin-right: 30px
+.mr-25
+    margin-right: 25px
+.mr-20
+    margin-right: 20px
+.mr-15
+    margin-right: 15px
+.mr-10
+    margin-right: 10px
+.ml-5
+    margin-left: 5px
+.ml-10
+    margin-left: 10px
+.ml-15
+    margin-left: 15px
+.ml-20
+    margin-left: 20px
+.ml-25
+    margin-left: 25px
+.ml-5
+    margin-left: 5px
+.pt-0
+    padding-top: 0
+.pl-10
+    padding-left: 10px
+.pr-20
+    padding-right: 20px
+
+.yscroll
+    overflow-y: scroll
+.border-btn
+    border-color: $color_hover
+    color: $color_primary
+
+// media
+@media (max-width: $phone)
+    .m-hide
+        display: none
+    .fixed-bottom
+        position: fixed
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 62px
+        background-color: #fff
+        padding: 8px !important
+        box-shadow: 0 -1px 7px rgba(0,0,0,.1)
+        .btn
+            margin-bottom: 0 !important
+    .clickable
+        text-decoration: underline
+
+@media (min-width: $phone)
+    .m-show
+        display: none
+
+// animate
+.rotate
+    animation: rotate 1s linear infinite
+
+@keyframes rotate
+    0%
+        transform:rotate(0)
+    50%
+        transform:rotate(180deg) 
+    100%
+        transform:rotate(360deg)
+
+.shake
+  animation: shake 7.5s infinite cubic-bezier(.36,.07,.19,.97) both
+  transform: translate3d(0, 0, 0)
+  backface-visibility: hidden
+  perspective: 1000px
+  &:hover
+      animation: unset
+
+
+@keyframes shake
+    1%, 9%
+        transform: translate3d(-1px, 0, 0)
+    2%, 8%
+        transform: translate3d(2px, 0, 0)
+    3%, 5%, 7%
+        transform: translate3d(-4px, 0, 0)
+    4%, 6%
+        transform: translate3d(4px, 0, 0)
+
+.loading-ripple
+    display: inline-block
+    position: relative
+    width: 64px
+    height: 64px
+    div
+        position: absolute
+        border: 4px solid $color_primary
+        opacity: 1
+        border-radius: 50%
+        animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite
+        &:nth-child(2)
+            animation-delay: -0.5s
+
+@keyframes lds-ripple
+    0%
+        top: 28px
+        left: 28px
+        width: 0
+        height: 0
+        opacity: 1
+    100%
+        top: -1px
+        left: -1px
+        width: 58px
+        height: 58px
+        opacity: 0
+
+.loading-ellipsis
+    display: inline-block
+    position: relative
+    width: 64px
+    height: 64px
+    div
+        position: absolute
+        top: 27px
+        width: 7px
+        height: 7px
+        border-radius: 50%
+        background: $color_primary
+        animation-timing-function: cubic-bezier(0, 1, 1, 0)
+        &:nth-child(1)
+            left: 6px
+            animation: lds-ellipsis1 0.6s infinite
+        &:nth-child(2)
+            left: 6px
+            animation: lds-ellipsis2 0.6s infinite
+        &:nth-child(3)
+            left: 26px
+            animation: lds-ellipsis2 0.6s infinite
+        &:nth-child(4)
+            left: 45px
+            animation: lds-ellipsis3 0.6s infinite
+
+@keyframes lds-ellipsis1
+    0%
+        transform: scale(0)
+    100%
+        transform: scale(1)
+
+@keyframes lds-ellipsis3
+    0%
+        transform: scale(1)
+    100%
+        transform: scale(0)
+
+@keyframes lds-ellipsis2
+    0%
+        transform: translate(0, 0)
+    100%
+        transform: translate(19px, 0)
+
+.loading-ring
+    display: inline-block
+    position: relative
+    width: 35px
+    height: 35px
+    left: 50%
+    margin-left: -17.5px
+    margin-top: 25px
+    div
+        box-sizing: border-box
+        display: block
+        position: absolute
+        width: 35px
+        height: 35px
+        margin: 3px
+        border: 3px solid $color_primary
+        border-radius: 50%
+        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite
+        border-color: $color_primary transparent transparent transparent
+        &:nth-child(1)
+            animation-delay: -0.45s
+        &:nth-child(2)
+            animation-delay: -0.3s
+        &:nth-child(3)
+            animation-delay: -0.15s
+
+@keyframes lds-ring
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)

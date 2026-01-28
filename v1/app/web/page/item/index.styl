@@ -1,0 +1,57 @@
+@import '~theme/tools'
+@import '~theme/pub'
+@import '~theme/ele'
+
+/** item **/
+.item-info
+    max-width 600px
+    width 100%
+    margin 0px auto
+    padding 0px 20px
+    font-size 14px
+    color #606266
+    .item-info-header
+        margin 0px 0px 15px 0px
+    .item-info-title
+        font-size 24px
+        color black
+        margin-bottom 12px
+    .item-info-origin
+        color #aea79f
+        font-size 12px
+    .item-info-link
+        color $color_geektomato
+        font-size 14px
+    .item-info-date
+        text-align right
+        font-size 12px
+        color #aea79f
+    .item-info-img
+        margin 10px auto
+        display block
+        max-width 100%
+    .item-info-con
+        margin-top 12px
+        line-height 1.8
+        word-wrap:break-word;
+    .item-info-footer
+        margin-top 30px
+        margin-bottom 30px
+        .item-info-footer-right
+            text-align right
+        .item-info-link
+            font-size 16px
+        .item-info-footer-site
+            font-size 14px
+            color #aea79f
+            line-height 26px
+    .item-info-words
+        font-size 14px
+        margin-top 20px
+        border-left 2px #aea79f solid
+        padding-left 8px
+
+@media (max-width: $media-screen-phone-max)
+    .item-info
+        .item-info-img
+            width 100% !important

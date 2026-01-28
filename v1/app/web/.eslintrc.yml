@@ -1,0 +1,71 @@
+#eslint config
+
+#禁止再去父级目录查找.eslintrc.*配置
+root: true
+
+parserOptions:
+  parser: babel-eslint
+
+env:
+  browser: true,
+
+globals:
+  EASY_ENV_IS_PROD: true
+  EASY_ENV_IS_NODE: true
+  EASY_ENV_IS_BROWSER: true
+  axios: true
+  jstz: true
+  gapi: true
+  gtag: true
+  FB: true
+  ga: true
+  Stripe: true
+  grecaptcha: true
+
+extends: 
+  # https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+  # consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
+  - plugin:vue/essential
+  # https://github.com/standard/standard/blob/master/docs/RULES-en.md
+  - standard
+  # required to lint *.vue files
+plugins:
+  - vue
+
+# add your custom rules here
+rules:
+  # allow async-await
+  generator-star-spacing: 'off'
+
+  # allow debugger during development
+  # no-debugger: process.env.NODE_ENV === 'production' ? 'error' : 'off'
+
+  indent: 
+    - 1 
+    - 4
+
+  space-before-function-paren: 
+    - 1 
+    - 'never'
+
+  no-tabs: 0
+  
+  no-unused-vars: 1
+
+  no-trailing-spaces: 0
+
+  camelcase: 0
+
+  index: 
+    - error
+        2
+    - SwitchCase
+        2
+        
+  no-eval: 'off'
+
+  prefer-promise-reject-errors: 0
+
+  object-curly-spacing: 
+    - 'warn'
+    - 'never'

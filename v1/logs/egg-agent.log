@@ -1,0 +1,79 @@
+2026-01-28 15:36:59,619 INFO 97898 [egg:logger] init all loggers with options: {"dir":"/Users/ljk/dev/github/3pole/geektomato/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"geektomato-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"agent"}
+2026-01-28 15:36:59,624 INFO 97898 [egg:core] dump config after load, 3ms
+2026-01-28 15:36:59,644 INFO 97898 [egg-watcher] Start watching: ["/Users/ljk/dev/github/3pole/geektomato/app","/Users/ljk/dev/github/3pole/geektomato/config","/Users/ljk/dev/github/3pole/geektomato/mocks","/Users/ljk/dev/github/3pole/geektomato/mocks_proxy","/Users/ljk/dev/github/3pole/geektomato/app.js","/Users/ljk/dev/github/3pole/geektomato/build"]
+2026-01-28 15:36:59,644 INFO 97898 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/app"
+2026-01-28 15:36:59,645 INFO 97898 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/config"
+2026-01-28 15:36:59,645 INFO 97898 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/mocks"
+2026-01-28 15:36:59,645 INFO 97898 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/mocks_proxy"
+2026-01-28 15:36:59,645 INFO 97898 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/app.js"
+2026-01-28 15:36:59,645 INFO 97898 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/build"
+2026-01-28 15:36:59,645 INFO 97898 [egg-watcher:agent] watcher start success
+2026-01-28 15:36:59,648 INFO 97898 [egg:core] dump config after ready, 1ms
+2026-01-28 15:39:00,478 INFO 6909 [egg:logger] init all loggers with options: {"dir":"/Users/ljk/dev/github/3pole/geektomato/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"geektomato-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"agent"}
+2026-01-28 15:39:00,484 INFO 6909 [egg:core] dump config after load, 4ms
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher] Start watching: ["/Users/ljk/dev/github/3pole/geektomato/app","/Users/ljk/dev/github/3pole/geektomato/config","/Users/ljk/dev/github/3pole/geektomato/mocks","/Users/ljk/dev/github/3pole/geektomato/mocks_proxy","/Users/ljk/dev/github/3pole/geektomato/app.js","/Users/ljk/dev/github/3pole/geektomato/build"]
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/app"
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/config"
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/mocks"
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/mocks_proxy"
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/app.js"
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/build"
+2026-01-28 15:39:00,503 INFO 6909 [egg-watcher:agent] watcher start success
+2026-01-28 15:39:00,508 INFO 6909 [egg:core] dump config after ready, 2ms
+2026-01-28 15:44:27,351 INFO 30910 [egg:logger] init all loggers with options: {"dir":"/Users/ljk/dev/github/3pole/geektomato/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"geektomato-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"agent"}
+2026-01-28 15:44:27,356 INFO 30910 [egg:core] dump config after load, 3ms
+2026-01-28 15:44:27,376 INFO 30910 [egg-watcher] Start watching: ["/Users/ljk/dev/github/3pole/geektomato/app","/Users/ljk/dev/github/3pole/geektomato/config","/Users/ljk/dev/github/3pole/geektomato/mocks","/Users/ljk/dev/github/3pole/geektomato/mocks_proxy","/Users/ljk/dev/github/3pole/geektomato/app.js","/Users/ljk/dev/github/3pole/geektomato/build"]
+2026-01-28 15:44:27,376 INFO 30910 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/app"
+2026-01-28 15:44:27,376 INFO 30910 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/config"
+2026-01-28 15:44:27,376 INFO 30910 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/mocks"
+2026-01-28 15:44:27,376 INFO 30910 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/mocks_proxy"
+2026-01-28 15:44:27,376 INFO 30910 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/app.js"
+2026-01-28 15:44:27,377 INFO 30910 [egg-watcher] Start watching: "/Users/ljk/dev/github/3pole/geektomato/build"
+2026-01-28 15:44:27,377 INFO 30910 [egg-watcher:agent] watcher start success
+2026-01-28 15:44:27,382 INFO 30910 [egg:core] dump config after ready, 2ms
+2026-01-28 15:44:28,770 ERROR 30910 nodejs.unhandledExceptionError: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:79:19)
+    at Object.createHash (node:crypto:139:10)
+    at module.exports (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/util/createHash.js:90:53)
+    at NormalModule._initBuildHash (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:401:16)
+    at handleParseError (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:449:10)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:481:5
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:342:12
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:373:3
+    at iterateNormalLoaders (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:214:10)
+    at Array.<anonymous> (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:205:4)
+    at Storage.finished (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:55:16)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:91:9
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/graceful-fs/graceful-fs.js:123:16
+    at FSReqCallback.readFileAfterClose [as oncomplete] (node:internal/fs/read/context:68:3)
+opensslErrorStack: ["error:03000086:digital envelope routines::initialization error","error:0308010C:digital envelope routines::unsupported"]
+library: "digital envelope routines"
+reason: "unsupported"
+code: "ERR_OSSL_EVP_UNSUPPORTED"
+name: "unhandledExceptionError"
+pid: 30910
+hostname: ljkdeMacBook-Pro.local
+
+2026-01-28 15:44:28,873 ERROR 30910 nodejs.unhandledExceptionError: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:79:19)
+    at Object.createHash (node:crypto:139:10)
+    at module.exports (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/util/createHash.js:90:53)
+    at NormalModule._initBuildHash (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:401:16)
+    at handleParseError (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:449:10)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:481:5
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/lib/NormalModule.js:342:12
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:373:3
+    at iterateNormalLoaders (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:214:10)
+    at Array.<anonymous> (/Users/ljk/dev/github/3pole/geektomato/node_modules/loader-runner/lib/LoaderRunner.js:205:4)
+    at Storage.finished (/Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:55:16)
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/webpack/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:91:9
+    at /Users/ljk/dev/github/3pole/geektomato/node_modules/graceful-fs/graceful-fs.js:123:16
+    at FSReqCallback.readFileAfterClose [as oncomplete] (node:internal/fs/read/context:68:3)
+opensslErrorStack: ["error:03000086:digital envelope routines::initialization error","error:0308010C:digital envelope routines::unsupported"]
+library: "digital envelope routines"
+reason: "unsupported"
+code: "ERR_OSSL_EVP_UNSUPPORTED"
+name: "unhandledExceptionError"
+pid: 30910
+hostname: ljkdeMacBook-Pro.local
+

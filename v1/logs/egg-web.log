@@ -1,0 +1,13 @@
+2026-01-28 15:44:28,048 INFO 30918 [egg:logger] init all loggers with options: {"dir":"/Users/ljk/dev/github/3pole/geektomato/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"geektomato-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"enablePerformanceTimer":false,"type":"application"}
+2026-01-28 15:44:28,059 INFO 30918 [egg-multipart] file mode enable
+2026-01-28 15:44:28,059 INFO 30918 [egg-multipart] will save temporary files to "/var/folders/d7/6glj3z216cndq6zk1lssjfdh0000gn/T/egg-multipart-tmp/geektomato", cleanup job cron: "0 30 4 * * *"
+2026-01-28 15:44:28,289 INFO 30918 [egg-static] starting static serve /public/ -> /Users/ljk/dev/github/3pole/geektomato/public
+2026-01-28 15:44:28,290 INFO 30918 [egg-security] use methodnoallow middleware
+2026-01-28 15:44:28,290 INFO 30918 [egg-security] use noopen middleware
+2026-01-28 15:44:28,290 INFO 30918 [egg-security] use nosniff middleware
+2026-01-28 15:44:28,291 INFO 30918 [egg-security] use xssProtection middleware
+2026-01-28 15:44:28,291 INFO 30918 [egg-security] use dta middleware
+2026-01-28 15:44:28,291 INFO 30918 [egg-security] compose 5 middlewares into one security middleware
+2026-01-28 15:44:28,300 INFO 30918 [egg:core] dump config after load, 3ms
+2026-01-28 15:44:28,311 INFO 30918 [egg-watcher:application] watcher start success
+2026-01-28 15:44:28,319 INFO 30918 [egg:core] dump config after ready, 6ms

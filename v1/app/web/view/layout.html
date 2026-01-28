@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta name="keywords">
+    <meta name="description">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <div id="app">
+        <!--vue-ssr-outlet-->
+    </div>
+
+    <script src="/plugin/jstz-1.0.4.min.js"></script>
+    <script src="/plugin/facebook.js"></script>
+    <script async src='https://apis.google.com/js/api:client.js'></script>
+    <script async src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-85358197-11"></script>
+    <script>
+        window.dataLayer = window.dataLayer || []
+        function gtag() { window.dataLayer.push(arguments) }
+        gtag('js', new Date())
+
+        gtag('config', 'UA-85358197-11')
+    </script>
+</html>
