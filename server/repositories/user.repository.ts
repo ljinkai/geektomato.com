@@ -30,6 +30,20 @@ export class UserRepository {
     return stmt.get(usernameOrMobile, usernameOrMobile) as UserRow | undefined;
   }
 
+  findByUsername(username: string): UserRow | undefined {
+    const stmt = this.db.prepare<UserRow>(
+      `SELECT * FROM ${USERS_TABLE} WHERE username = ? LIMIT 1`
+    );
+    return stmt.get(username) as UserRow | undefined;
+  }
+
+  findByEmail(email: string): UserRow | undefined {
+    const stmt = this.db.prepare<UserRow>(
+      `SELECT * FROM ${USERS_TABLE} WHERE email = ? LIMIT 1`
+    );
+    return stmt.get(email) as UserRow | undefined;
+  }
+
   findByLcObjectId(lcId: string): UserRow | undefined {
     const stmt = this.db.prepare<UserRow>(
       `SELECT * FROM ${USERS_TABLE} WHERE lc_object_id = ? LIMIT 1`
@@ -80,6 +94,16 @@ export class UserRepository {
        WHERE id = ?`
     );
     stmt.run(delta, userId);
+  }
+
+  updateSessionToken(userId: number, sessionToken: string) {
+    const now = new Date().toISOString();
+    const stmt = this.db.prepare(
+      `UPDATE ${USERS_TABLE}
+       SET session_token = ?, updated_at = ?
+       WHERE id = ?`
+    );
+    stmt.run(sessionToken, now, userId);
   }
 }
 

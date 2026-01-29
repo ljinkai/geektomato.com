@@ -1,4 +1,7 @@
+import crypto from 'node:crypto';
 import { QunUserService } from '../../services/qun/user.service';
+import { UserRepository } from '../../repositories/user.repository';
+import { signToken } from '../../utils/jws';
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<{
@@ -39,20 +42,40 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  // 成功时返回 success: true，并附带用户与 token 信息
-  const token = `${user.id}:${Date.now()}`;
+  // 生成或获取 sessionToken
+  let sessionToken = user.session_token;
+  if (!sessionToken) {
+    // 生成新的 sessionToken（类似 LeanCloud 的格式）
+    sessionToken = crypto.randomBytes(16).toString('base64').replace(/[+/=]/g, '');
+    
+    // 更新用户的 sessionToken
+    const repo = new UserRepository();
+    repo.updateSessionToken(user.id, sessionToken);
+  }
 
+  // 生成 JWT token（兼容旧系统格式）
+  const userId = user.username || user.mobile_phone_number || String(user.id);
+  const userName = user.nick_name;
+  const id = user.lc_object_id || String(user.id);
+  const exp = Math.floor(Date.now() / 1000); // 当前时间作为过期时间（旧系统逻辑）
+
+  const token = await signToken(
+    {
+      userId,
+      userName,
+      id,
+      sessionToken
+    },
+    exp
+  );
+
+  // 返回格式：{ success: true, data: { userId, userName, token } }
   return {
     success: true,
     data: {
-      token,
-      user: {
-        id: user.id,
-        username: user.username,
-        mobilePhoneNumber: user.mobile_phone_number,
-        nickName: user.nick_name,
-        exp: user.exp
-      }
+      userId,
+      userName,
+      token
     }
   };
 });

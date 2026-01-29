@@ -14,14 +14,14 @@
     "migrate:theme": "tsx ./scripts/leancloud-migrate/import-theme-from-json.ts"
   },
   "dependencies": {
-    "nuxt": "^4.0.0",
-    "better-sqlite3": "^9.0.0"
+    "better-sqlite3": "^9.0.0",
+    "jws": "^4.0.1",
+    "nuxt": "^4.0.0"
   },
   "devDependencies": {
+    "@types/jws": "^3.2.11",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.0",
     "typescript": "^5.6.0"
   }
 }
-
-

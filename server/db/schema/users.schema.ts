@@ -4,7 +4,7 @@ export const USERS_TABLE = 'users';
 
 export interface UserRow {
   id: number;
-  lc_object_id: string;
+  lc_object_id: string | null; // LeanCloud 用户 ID，新用户为 null
   username: string | null;
   password_hash: string;
   salt: string | null;
@@ -26,7 +26,7 @@ export interface UserRow {
 export const createUsersTableSQL = `
 CREATE TABLE IF NOT EXISTS ${USERS_TABLE} (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  lc_object_id TEXT NOT NULL UNIQUE,
+  lc_object_id TEXT UNIQUE,
   username TEXT,
   password_hash TEXT NOT NULL,
   salt TEXT,

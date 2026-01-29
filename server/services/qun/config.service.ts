@@ -1,23 +1,37 @@
 import { ConfigRepository } from '../../repositories/config.repository';
+import { ThemeRepository } from '../../repositories/theme.repository';
 
 export class QunConfigService {
-  private repo = new ConfigRepository();
+  private configRepo = new ConfigRepository();
+  private themeRepo = new ThemeRepository();
 
   /**
    * 返回 `/qun/config` 需要的配置结构
-   * 这里先直接返回 key-value 列表，后续可按旧系统的 JSON 结构做组装。
+   * 格式：{ theme: [{ url, vip }], config: { key: value } }
    */
   async getConfig() {
-    const all = this.repo.findAll();
-    const data: Record<string, unknown> = {};
-    for (const row of all) {
+    // 获取启用的主题
+    const themes = this.themeRepo.findEnabled();
+    const themeList = themes.map((t) => ({
+      url: t.url,
+      vip: t.vip
+    }));
+
+    // 获取配置
+    const configRows = this.configRepo.findAll();
+    const config: Record<string, unknown> = {};
+    for (const row of configRows) {
       try {
-        data[row.key] = JSON.parse(row.value);
+        config[row.key] = JSON.parse(row.value);
       } catch {
-        data[row.key] = row.value;
+        config[row.key] = row.value;
       }
     }
-    return data;
+
+    return {
+      theme: themeList,
+      config
+    };
   }
 }
 

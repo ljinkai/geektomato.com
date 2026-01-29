@@ -25,10 +25,10 @@ module.exports = app => {
     router.get('/home/list', home.list)
 
     // qunheying.com
-    router.get('/qun/config', qun.configInfo)
-    router.post('/qun/userAdd', qun.registerUser)
-    router.post('/qun/userLogin', qun.loginUser)
-    router.post('/qun/synchronizationUser', qun.synchronizationUserInfo)
+    router.get('/qun/config', qun.configInfo) // 已验证
+    router.post('/qun/userAdd', qun.registerUser) // 已验证
+    router.post('/qun/userLogin', qun.loginUser) // 已验证
+    router.post('/qun/synchronizationUser', qun.synchronizationUserInfo) // 已验证
     router.post('/qun/updateExp', qun.updateExp)
     router.post('/qun/updatePass', qun.updatePass)
     router.get('/qun/updateExp', qun.updateExpPage)
