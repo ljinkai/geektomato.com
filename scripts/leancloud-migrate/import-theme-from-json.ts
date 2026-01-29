@@ -3,28 +3,37 @@ import path from 'node:path';
 import readline from 'node:readline';
 import { getDb } from '../../server/db/client';
 import { initDb } from '../../server/db/init';
-import { QUN_CONFIG_TABLE } from '../../server/db/schema/config.schema';
+import { THEMES_TABLE } from '../../server/db/schema/theme.schema';
 
-interface LeanCloudConfig {
-  objectId?: string;
-  key: string;
-  value: string;
-  createdAt?: string;
-  updatedAt?: string;
+/**
+ * 从 db/data/theme.0.jsonl 导入主题到 SQLite
+ *
+ * JSONL 格式说明：
+ * - 第一行：`#filetype:JSON-streaming {"type":"Class","class":"theme"}`
+ * - 后续每行：一个完整的 JSON 对象
+ */
+interface LeanCloudTheme {
+  objectId: string;
+  state: number; // 0 不启用, 1 启用
+  vip: number; // 0 非VIP, 1 VIP
+  url: string;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export async function importConfigFromJson() {
-  // 确保表结构已初始化
+export async function importThemeFromJson() {
+  // 确保数据库表已创建
   initDb();
 
   const db = getDb();
-  const filePath = path.resolve(process.cwd(), 'db/data/config.0.jsonl');
+  const filePath = path.resolve(process.cwd(), 'db/data/theme.0.jsonl');
 
   if (!fs.existsSync(filePath)) {
     throw new Error(`文件不存在: ${filePath}`);
   }
 
-  // 读取全部行
+  // 先读取所有行到内存
   const lines: string[] = [];
   const fileStream = fs.createReadStream(filePath, 'utf-8');
   const rl = readline.createInterface({
@@ -37,9 +46,9 @@ export async function importConfigFromJson() {
   }
 
   const insert = db.prepare(
-    `INSERT OR IGNORE INTO ${QUN_CONFIG_TABLE}
-      (lc_object_id, key, value, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?)`
+    `INSERT OR IGNORE INTO ${THEMES_TABLE}
+      (lc_object_id, state, vip, url, \`order\`, created_at, updated_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`
   );
 
   let importedCount = 0;
@@ -50,45 +59,66 @@ export async function importConfigFromJson() {
     lines.forEach((line, index) => {
       const lineNumber = index + 1;
 
-      // 跳过文件头
+      // 跳过第一行的文件类型声明
       if (lineNumber === 1 && line.startsWith('#filetype:')) {
         return;
       }
 
+      // 跳过空行
       if (!line.trim()) {
         return;
       }
 
       try {
-        const cfg: LeanCloudConfig = JSON.parse(line);
+        const theme: LeanCloudTheme = JSON.parse(line);
 
-        if (!cfg.key) {
-          errors.push({ line: lineNumber, error: '缺少 key', objectId: cfg.objectId });
+        // 验证必需字段
+        if (!theme.objectId) {
+          errors.push({ line: lineNumber, error: '缺少 objectId' });
           skippedCount++;
           return;
         }
 
+        if (!theme.url) {
+          errors.push({
+            line: lineNumber,
+            error: '缺少 url',
+            objectId: theme.objectId,
+          });
+          skippedCount++;
+          return;
+        }
+
+        // 执行插入
         insert.run(
-          cfg.objectId ?? null,
-          cfg.key,
-          cfg.value ?? '',
-          cfg.createdAt ?? new Date().toISOString(),
-          cfg.updatedAt ?? new Date().toISOString()
+          theme.objectId,
+          theme.state ?? 0,
+          theme.vip ?? 0,
+          theme.url,
+          theme.order ?? 0,
+          theme.createdAt || new Date().toISOString(),
+          theme.updatedAt || new Date().toISOString()
         );
 
         importedCount++;
       } catch (err) {
-        const errorMsg = err instanceof Error ? err.message : String(err);
-        errors.push({ line: lineNumber, error: `解析失败: ${errorMsg}` });
+        const errorMsg =
+          err instanceof Error ? err.message : String(err);
+        errors.push({
+          line: lineNumber,
+          error: `解析失败: ${errorMsg}`,
+        });
         skippedCount++;
       }
     });
   });
 
+  // 执行事务
   tx();
 
+  // 输出结果
   // eslint-disable-next-line no-console
-  console.log(`\n导入 config 完成:`);
+  console.log(`\n导入 theme 完成:`);
   // eslint-disable-next-line no-console
   console.log(`  ✓ 成功导入: ${importedCount} 条`);
   // eslint-disable-next-line no-console
@@ -111,10 +141,9 @@ export async function importConfigFromJson() {
 }
 
 if (require.main === module) {
-  importConfigFromJson().catch((err) => {
+  importThemeFromJson().catch((err) => {
     // eslint-disable-next-line no-console
     console.error(err);
     process.exit(1);
   });
 }
-

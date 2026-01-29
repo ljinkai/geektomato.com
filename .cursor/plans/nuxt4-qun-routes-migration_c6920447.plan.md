@@ -1,3 +1,9 @@
+---
+name: ""
+overview: ""
+todos: []
+---
+
 # Nuxt4 + SQLite `/qun/*` 路由迁移技术方案
 
 ## 目标与范围
@@ -291,16 +297,52 @@ flowchart TD
     - `UserShadow` → `user_shadows`（可选）
   - 后续只需在实际跑一遍导入脚本时，补齐个别枚举值、状态字段的业务含义。
 
-- **2. 导入脚本（从 `db/0128/*_all.json` → SQLite）**
-  - 在 `scripts/leancloud-migrate` 下为每个核心 class 编写单独的导入脚本，例如：
-    - `import-users-from-json.ts`：读取 `_User_all.json`，写入 `users` 表。
-    - `import-expiration-from-json.ts`：读取 `Expiration_all.json`，写入 `user_expiration` 或回填 `users.expiration_at`。
-    - `import-orders-from-json.ts`：读取 `qun_orders_all.json`，写入 `orders` 表。
-    - `import-config-from-json.ts`：读取 `config_all.json`，写入 `qun_config` 表。
+- **2. 导入脚本（从 `db/data/*.0.jsonl` → SQLite）**
+  - 当前导出格式示例：
+    - `db/data/_User.0.jsonl`
+      - 第一行：`#filetype:JSON-streaming {"type":"Class","class":"_User"}`（文件头，需要在脚本中跳过）
+      - 之后每一行：一个 `_User` 记录的完整 JSON，如：
+        - `{"salt":"...","email":"...","sessionToken":"...","applyAt":{"__type":"Date","iso":"..."},"password":"...","objectId":"5c710c95c05a807a4d9d7179","username":"l1","createdAt":"...","emailVerified":false,"nickName":"...","mobilePhoneVerified":false,...}`
+    - `db/data/Expiration.0.jsonl`
+      - 文件头：`#filetype:JSON-streaming {"type":"Class","class":"Expiration"}`
+      - 每行包含 `objectId`, `userObjectId`, `username`, 可选 `expirationAt`（`{"__type":"Date","iso":"..."}`）、`Bot`、`sessionToken`、`userObject`（Pointer<_User>）等字段。
+    - `db/data/qun_orders.0.jsonl`
+      - 文件头：`#filetype:JSON-streaming {"type":"Class","class":"qun_orders"}`
+      - 每行字段与方案中梳理的 schema 基本一致：`objectId`, `user_id`, `qr_id`, `charge_id`, `order_id`, `amount`, `day`, `payway`, `state`, `refund_state`, `refund_amount`, `description`, `create_time`, `createdAt`, `updatedAt`, `ACL`。
+    - `db/data/config.0.jsonl`
+      - 文件头：`#filetype:JSON-streaming {"type":"Class","class":"config"}`
+      - 每行：`{"key":"...","value":"...","ACL":{...},"createdAt":"...","updatedAt":"...","objectId":"..."}`。
+    - `db/data/Rooms.0.jsonl`
+      - 文件头：`#filetype:JSON-streaming {"type":"Class","class":"Rooms"}`，文件很大（约 25MB），建议导入脚本按行流式处理。
+      - 每行会包含房间相关字段（`roomId`, `roomName`, `wxId`, `memberAll`, `userId`, `userName` 等，具体可在后续实现时按需解析）。
+    - `db/data/UserShadow.0.jsonl`
+      - 文件头：`#filetype:JSON-streaming {"type":"Class","class":"UserShadow"}`
+      - 每行：`{"wxId":"...","nickName":"...","userId":"...","objectId":"...","createdAt":"...","updatedAt":"...","ACL":{...}}`。
+  - 在 `scripts/leancloud-migrate` 下为每个核心 class 编写/完善导入脚本（部分已存在，可直接复用和扩展）：
+    - `import-users-from-json.ts`：
+      - 读取 `db/data/_User.0.jsonl`，跳过首行 `#filetype`，对每一行 `JSON.parse` 得到 LeanCloud `_User` 对象。
+      - 按前文 `users` 表设计，填充 `lc_object_id`（来自 `objectId`）、`username`、`password_hash`（可先直接存 LeanCloud 的 `password`，后续再统一升级加密）、`salt`、`email`、`email_verified`、`nick_name` 等字段，并将 `createdAt`/`updatedAt` 转成 `DATETIME`。
+    - `import-expiration-from-json.ts`：
+      - 读取 `db/data/Expiration.0.jsonl`，同样跳过首行。
+      - 若使用独立表：根据 JSON 中的 `objectId`、`userObjectId`、`username`、`expirationAt.iso`、`Bot`、`sessionToken` 等写入 `user_expiration` 表。
+      - 若合并到 `users` 表：根据 `userObjectId` 找到对应 `users.lc_object_id`，更新 `users.expiration_at` / `users.session_token` / `users.status` 等字段。
+    - `import-orders-from-json.ts`：
+      - 读取 `db/data/qun_orders.0.jsonl`。
+      - 将 `amount`、`refund_amount` 从字符串转换为整数金额（分）；`create_time` 原样保存到 `create_time_raw`，同时根据需要转成 `created_at` 时间。
+      - 先写入 `orders` 表的 `user_lc_id` 字段（使用原始 `user_id`），在后续二次脚本中利用 `users (lc_object_id → id)` 映射补齐 `user_id` 外键。
+    - `import-config-from-json.ts`：
+      - 读取 `db/data/config.0.jsonl`，根据 `key`/`value` 写入 `qun_config` 表。
+      - 对 value 为 JSON 字符串的配置，在应用层做 `JSON.parse`，不强依赖 DB 层 JSON 类型。
+    - （可选）`import-rooms-from-json.ts`：
+      - 读取 `db/data/Rooms.0.jsonl`，因为体积较大，按行流式读取，每处理一行就立即 `INSERT` / `UPSERT`。
+      - 只映射当前 `/qun/*` 需要的字段，其它字段可先整体存为 JSON 文本，避免过度设计。
+    - （可选）`import-user-shadow-from-json.ts`：
+      - 读取 `db/data/UserShadow.0.jsonl`，写入 `user_shadows` 表。
+      - 为后续根据微信 ID 反查 `_User` 或本地 `users` 留好基础数据。
   - 导入时注意：
-    - 先写入拥有独立主键、无外键依赖的表（如 `users`, `qun_config`），再写依赖它们的表（如 `orders`, `user_expiration`）。
-    - 保存一份 `lc_object_id` → 本地 `id` 的映射（可以内存 map，也可以单独映射表），用于处理 `user_lc_id` → `user_id` 的转换。
-    - 做必要的类型转换，例如金额 String → Integer（分）、布尔 → 0/1。
+    - 先写入拥有独立主键、无外键依赖的表（如 `users`, `qun_config`，以及无需用户外键的 `orders.user_lc_id`），再写依赖它们的表（如补齐 `orders.user_id`、`user_expiration` 等）。
+    - 保存一份 `lc_object_id` → 本地 `id` 的映射（可以内存 map，也可以单独映射表），用于处理 `user_lc_id` → `user_id` 的转换以及 `Expiration.userObjectId` → `users.id` 的关联。
+    - 做必要的类型转换，例如金额 String → Integer（分）、布尔 → 0/1，日期字符串/LeanCloud Date → SQLite `DATETIME`。
 
 - **3. 与 Nuxt `/qun/*` 接口联调**
   - 在本地 SQLite 导入完成后：

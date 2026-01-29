@@ -7,9 +7,11 @@
     "build": "nuxt build",
     "preview": "nuxt preview",
     "start": "nuxt start",
-    "migrate:users": "ts-node ./scripts/leancloud-migrate/import-users-from-json.ts",
-    "migrate:orders": "ts-node ./scripts/leancloud-migrate/import-orders-from-json.ts",
-    "migrate:config": "ts-node ./scripts/leancloud-migrate/import-config-from-json.ts"
+    "migrate:users": "tsx ./scripts/leancloud-migrate/import-users-from-json.ts",
+    "migrate:orders": "tsx ./scripts/leancloud-migrate/import-orders-from-json.ts",
+    "migrate:config": "tsx ./scripts/leancloud-migrate/import-config-from-json.ts",
+    "migrate:expiration": "tsx ./scripts/leancloud-migrate/import-expiration-from-json.ts",
+    "migrate:theme": "tsx ./scripts/leancloud-migrate/import-theme-from-json.ts"
   },
   "dependencies": {
     "nuxt": "^4.0.0",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
     "typescript": "^5.6.0"
   }
 }

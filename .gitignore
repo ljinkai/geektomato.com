@@ -25,7 +25,7 @@ logs
 .vscode
 
 # SQLite 数据文件（如需入库可单独调整）
-data/
+db/data/Rooms.0.jsonl
 
 # Nuxt & tooling 产生的临时文件
 .nitro

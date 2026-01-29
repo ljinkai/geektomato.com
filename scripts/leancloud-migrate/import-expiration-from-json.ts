@@ -6,26 +6,19 @@ import { initDb } from '../../server/db/init';
 import { USERS_TABLE } from '../../server/db/schema/users.schema';
 
 /**
- * 从 db/data/_User.0.jsonl 导入用户到 SQLite
+ * 从 db/data/Expiration.0.jsonl 导入过期信息到 users 表
  *
- * JSONL 格式说明：
- * - 第一行：`#filetype:JSON-streaming {"type":"Class","class":"_User"}`
- * - 后续每行：一个完整的 JSON 对象
+ * 策略：直接更新 users 表的 expiration_at 字段
+ * - 通过 userObjectId 匹配 users.lc_object_id
+ * - 更新 expiration_at 和 session_token（如果 Expiration 中的更新）
  */
-interface LeanCloudUser {
+interface LeanCloudExpiration {
   objectId: string;
-  username?: string;
-  password?: string;
-  salt?: string;
-  email?: string;
-  emailVerified?: boolean;
-  mobilePhoneNumber?: string;
-  mobilePhoneVerified?: boolean;
-  nickName: string;
-  applyAt?: { __type: 'Date'; iso: string };
+  userObjectId: string;
+  username: string;
   expirationAt?: { __type: 'Date'; iso: string };
   sessionToken?: string;
-  authData?: unknown;
+  Bot?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -45,25 +38,18 @@ function parseDate(dateValue: unknown): string | null {
   return null;
 }
 
-/**
- * 将布尔值转换为 SQLite 整数（0/1）
- */
-function boolToInt(value: boolean | undefined): number {
-  return value === true ? 1 : 0;
-}
-
-export async function importUsersFromJson() {
+export async function importExpirationFromJson() {
   // 确保数据库表已创建
   initDb();
 
   const db = getDb();
-  const filePath = path.resolve(process.cwd(), 'db/data/_User.0.jsonl');
+  const filePath = path.resolve(process.cwd(), 'db/data/Expiration.0.jsonl');
 
   if (!fs.existsSync(filePath)) {
     throw new Error(`文件不存在: ${filePath}`);
   }
 
-  // 先读取所有行到内存（对于大文件，可以考虑分批处理）
+  // 先读取所有行到内存
   const lines: string[] = [];
   const fileStream = fs.createReadStream(filePath, 'utf-8');
   const rl = readline.createInterface({
@@ -75,16 +61,16 @@ export async function importUsersFromJson() {
     lines.push(line);
   }
 
-  const insert = db.prepare(
-    `INSERT OR IGNORE INTO ${USERS_TABLE}
-      (lc_object_id, username, password_hash, salt, email, email_verified,
-       mobile_phone_number, mobile_phone_verified, nick_name,
-       apply_at, expiration_at, session_token, auth_data,
-       status, exp, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  // 准备更新语句：更新 expiration_at 和 session_token
+  const updateExpiration = db.prepare(
+    `UPDATE ${USERS_TABLE}
+     SET expiration_at = ?,
+         session_token = COALESCE(?, session_token),
+         updated_at = ?
+     WHERE lc_object_id = ?`
   );
 
-  let importedCount = 0;
+  let updatedCount = 0;
   let skippedCount = 0;
   const errors: Array<{ line: number; error: string; objectId?: string }> = [];
 
@@ -103,47 +89,49 @@ export async function importUsersFromJson() {
       }
 
       try {
-        const user: LeanCloudUser = JSON.parse(line);
+        const exp: LeanCloudExpiration = JSON.parse(line);
 
         // 验证必需字段
-        if (!user.objectId) {
-          errors.push({ line: lineNumber, error: '缺少 objectId' });
-          skippedCount++;
-          return;
-        }
-
-        if (!user.nickName) {
+        if (!exp.userObjectId) {
           errors.push({
             line: lineNumber,
-            error: '缺少 nickName',
-            objectId: user.objectId,
+            error: '缺少 userObjectId',
+            objectId: exp.objectId,
           });
           skippedCount++;
           return;
         }
 
-        // 执行插入
-        insert.run(
-          user.objectId,
-          user.username ?? null,
-          user.password ?? '',
-          user.salt ?? null,
-          user.email ?? null,
-          boolToInt(user.emailVerified),
-          user.mobilePhoneNumber ?? null,
-          boolToInt(user.mobilePhoneVerified),
-          user.nickName,
-          parseDate(user.applyAt),
-          parseDate(user.expirationAt),
-          user.sessionToken ?? null,
-          user.authData ? JSON.stringify(user.authData) : null,
-          1, // status: 默认正常
-          0, // exp: 默认经验值为 0
-          user.createdAt || new Date().toISOString(),
-          user.updatedAt || new Date().toISOString()
+        // 检查用户是否存在
+        const checkUser = db
+          .prepare(`SELECT id FROM ${USERS_TABLE} WHERE lc_object_id = ?`)
+          .get(exp.userObjectId) as { id: number } | undefined;
+
+        if (!checkUser) {
+          errors.push({
+            line: lineNumber,
+            error: `用户不存在 (userObjectId: ${exp.userObjectId})`,
+            objectId: exp.objectId,
+          });
+          skippedCount++;
+          return;
+        }
+
+        // 执行更新
+        const expirationAt = parseDate(exp.expirationAt);
+        const result = updateExpiration.run(
+          expirationAt,
+          exp.sessionToken ?? null,
+          exp.updatedAt || new Date().toISOString(),
+          exp.userObjectId
         );
 
-        importedCount++;
+        if (result.changes > 0) {
+          updatedCount++;
+        } else {
+          // 可能是没有变化（expiration_at 已经是相同值）
+          updatedCount++;
+        }
       } catch (err) {
         const errorMsg =
           err instanceof Error ? err.message : String(err);
@@ -161,9 +149,9 @@ export async function importUsersFromJson() {
 
   // 输出结果
   // eslint-disable-next-line no-console
-  console.log(`\n导入完成:`);
+  console.log(`\n导入 Expiration 完成:`);
   // eslint-disable-next-line no-console
-  console.log(`  ✓ 成功导入: ${importedCount} 条`);
+  console.log(`  ✓ 成功更新: ${updatedCount} 条`);
   // eslint-disable-next-line no-console
   console.log(`  ✗ 跳过/失败: ${skippedCount} 条`);
 
@@ -180,15 +168,13 @@ export async function importUsersFromJson() {
     }
   }
 
-  return { importedCount, skippedCount, errors };
+  return { updatedCount, skippedCount, errors };
 }
 
 if (require.main === module) {
-  importUsersFromJson().catch((err) => {
+  importExpirationFromJson().catch((err) => {
     // eslint-disable-next-line no-console
     console.error(err);
     process.exit(1);
   });
 }
-
-

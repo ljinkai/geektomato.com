@@ -1,0 +1,4 @@
+#filetype:JSON-streaming {"type":"Class","class":"TestObject"}
+{"words":"Hello World!","ACL":{"*":{"read":true,"write":true}},"createdAt":"2019-02-15T06:48:37.208Z","updatedAt":"2019-02-15T06:48:37.208Z","objectId":"5c6660c544d90419c1d911cf"}
+{"words":"Hello World!","ACL":{"*":{"read":true,"write":true}},"createdAt":"2019-02-15T06:51:42.107Z","updatedAt":"2019-02-15T06:51:42.107Z","objectId":"5c66617ec05a800054ef16e9"}
+{"words":"Hello World!","ACL":{"*":{"read":true,"write":true}},"createdAt":"2019-02-15T06:52:11.192Z","updatedAt":"2019-02-15T06:52:11.192Z","objectId":"5c66619b67f3560044446b40"}
