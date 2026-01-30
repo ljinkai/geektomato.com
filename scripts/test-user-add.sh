@@ -2,7 +2,7 @@
 
 # 测试 /qun/userAdd 接口的 curl 命令
 
-BASE_URL="http://localhost:3000/api/qun"
+BASE_URL="http://localhost:9002/api/qun"
 
 echo "=== 测试 1: 使用旧参数格式注册新用户（userId/userName/password/checkPass/email） ==="
 TS=$(date +%s)

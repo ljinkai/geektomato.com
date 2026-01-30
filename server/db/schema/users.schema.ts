@@ -17,6 +17,8 @@ export interface UserRow {
   expiration_at: string | null;
   session_token: string | null;
   auth_data: string | null; // JSON
+  reset_token: string | null;
+  reset_token_expires: string | null;
   status: number;
   exp: number;
   created_at: string;
@@ -39,6 +41,8 @@ CREATE TABLE IF NOT EXISTS ${USERS_TABLE} (
   expiration_at TEXT,
   session_token TEXT,
   auth_data TEXT,
+  reset_token TEXT,
+  reset_token_expires TEXT,
   status INTEGER DEFAULT 1,
   exp INTEGER DEFAULT 0,
   created_at TEXT NOT NULL,

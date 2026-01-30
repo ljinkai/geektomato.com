@@ -33,8 +33,11 @@ export class QunUserService {
     const user = this.repo.findByUsernameOrMobile(usernameOrMobile);
     if (!user) return null;
 
-    // 根据是否有 lc_object_id 判断用户来源
-    const isLeanCloudUser = !!user.lc_object_id;
+    // 如果密码是 pbkdf2 生成的 64 位 hex，则优先按新算法验证
+    const isPbkdf2Style = /^[0-9a-f]{64}$/i.test(user.password_hash);
+
+    // 只有在仍然是 LeanCloud 风格密码时，才按 LeanCloud 算法验证
+    const isLeanCloudUser = !!user.lc_object_id && !isPbkdf2Style;
 
     // 使用对应的加密算法验证密码
     const isValid = verifyPassword(

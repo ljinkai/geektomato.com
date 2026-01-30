@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   srcDir: ".",
   compatibilityDate: "2026-01-28",
+  devServer: {
+    port: 9002
+  },
   nitro: {
     preset: "node-server",
   },

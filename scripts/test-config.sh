@@ -2,7 +2,7 @@
 
 # 测试 /qun/config 接口的 curl 命令
 
-BASE_URL="http://localhost:3000/api/qun"
+BASE_URL="http://localhost:9002/api/qun"
 
 echo "=== 测试 1: 获取配置（/qun/config）==="
 RESPONSE=$(curl -s -X GET "$BASE_URL/config" \

@@ -29,10 +29,10 @@ module.exports = app => {
     router.post('/qun/userAdd', qun.registerUser) // 已验证
     router.post('/qun/userLogin', qun.loginUser) // 已验证
     router.post('/qun/synchronizationUser', qun.synchronizationUserInfo) // 已验证
-    router.post('/qun/updateExp', qun.updateExp)
+    router.post('/qun/updateExp', qun.updateExp) // 已验证
     router.post('/qun/updatePass', qun.updatePass)
-    router.get('/qun/updateExp', qun.updateExpPage)
-    router.post('/qun/forgetUser', qun.forgetUser)
+    router.get('/qun/updateExp', qun.updateExpPage) // 已验证
+    router.post('/qun/forgetUser', qun.forgetUser) // 已验证
     router.post('/qun/roomsList', qun.roomsList)
     router.post('/qun/yungou/hook', qun.yungouosHook)
     router.post('/qun/mbd_order_state', qun.mbdQueryOrder)

@@ -2,7 +2,7 @@
 
 # 测试 /qun/synchronizationUser 接口的 curl 命令
 
-BASE_URL="http://localhost:3000/api/qun"
+BASE_URL="http://localhost:9002/api/qun"
 
 echo "=== 测试 1: 同步已存在用户（LeanCloud 用户 l1，带密码）==="
 curl -s -X POST "$BASE_URL/synchronizationUser" \
